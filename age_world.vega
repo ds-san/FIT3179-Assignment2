@@ -1,0 +1,13 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Suicides around the world by age" },
+    "data": {
+    "url": "data/suicidal.csv"},
+        "mark": {"type": "line"},
+        "encoding": {
+            "x": {"timeunit":"year", "field": "year"},
+            "y": {"aggregate":"sum", "field": "suicides/100k pop", "type": "quantitative", "title": "Suicides per 100k"},
+            "color": {"field": "age", "type": "nominal"}
+        
+        }
+}
