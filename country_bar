@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Suicides around the world" },
+    "data": {
+    "url": "data/suicidal.csv"
+    },
+    "mark": {
+        "type": "line",
+        "point": {
+          "filled": false,
+          "fill": "white"
+        }
+      },
+      "encoding": {
+        "x": {"timeUnit": "year", "field": "year"},
+        "y": {"aggregate":"sum", "field": "suicides_no", "type": "quantitative"}
+      }
+    }
+    
