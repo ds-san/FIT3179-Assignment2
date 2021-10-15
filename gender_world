@@ -28,7 +28,7 @@
         }
       },
       "encoding": {
-        "x": {"timeUnit": "year", "field": "year"},
+        "x": {"timeUnit": "year", "field": "year", "title":"Years"},
         "y": {"aggregate":"sum", "field": "suicides_no", "type": "quantitative"},
         "color": {"field": "sex", "type": "nominal"}
       }

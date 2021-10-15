@@ -23,7 +23,7 @@
         "mark": {"type": "line"},
         "encoding": {
             "x": {"timeunit":"year", "field": "year"},
-            "y": {"aggregate":"sum", "field": "suicides/100k pop", "type": "quantitative", "title": "Suicides per 100k"},
+            "y": {"aggregate":"sum", "field": "suicides", "type": "quantitative", "title": "Suicides per 100k"},
             "color": {"field": "age", "type": "nominal"}
         
         }
