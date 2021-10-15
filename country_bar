@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": { "text": "Suicides in countries" },
   "data": {
-  "url": "data/suicidal.csv"
+  "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
   },
   "mark": "bar",
   "encoding": {
