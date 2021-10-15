@@ -4,11 +4,27 @@
   "data": {
   "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
   },
+  "transform": [{
+    "joinaggregate": [{
+      "op": "sum",
+      "field": "population",
+      "as": "tpopulation"
+    },
+    {
+      "op": "sum",
+      "field": "suicides_no",
+      "as": "tsuicide"
+    }]
+  },
+  {
+    "calculate": "(datum.tpopulation/datum.tsuicide)/100000",
+    "as": "suicides"
+  }],
   "mark": "bar",
   "encoding": {
     "x": {
       "aggregate": "sum", 
-      "field": "suicides/100k pop",
+      "field": "suicides",
       "type": "quantitative"},
     "y": {"field": "country", "type": "nominal"}
   }

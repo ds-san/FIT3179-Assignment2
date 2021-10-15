@@ -1,9 +1,25 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Suicides around the world by Age" },
-    "data": {
-    "url": "data/suicidal.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Suicides in countries" },
+  "data": {
+  "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
+  },
+  "transform": [{
+    "joinaggregate": [{
+      "op": "sum",
+      "field": "population",
+      "as": "tpopulation"
     },
+    {
+      "op": "sum",
+      "field": "suicides_no",
+      "as": "tsuicide"
+    }]
+  },
+  {
+    "calculate": "(datum.tpopulation/datum.tsuicide)/100000",
+    "as": "suicides"
+  }],
     "mark": {
         "type": "line",
         "point": {
