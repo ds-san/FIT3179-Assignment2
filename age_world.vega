@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Suicides in countries" },
+    "title": { "text": "Suicides according to age" },
     "data": {
     "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
     },
@@ -17,7 +17,7 @@
       }]
     },
     {
-      "calculate": "(datum.tpopulation/datum.tsuicide)/100000",
+      "calculate": "(datum.tpopulation/datum.tsuicide)*100000",
       "as": "suicides"
     }],
         "mark": {"type": "line"},

@@ -17,7 +17,7 @@
     }]
   },
   {
-    "calculate": "(datum.tpopulation/datum.tsuicide)/100000",
+    "calculate": "(datum.tpopulation/datum.tsuicide)*100000",
     "as": "suicides"
   }],
   "mark": "bar",
