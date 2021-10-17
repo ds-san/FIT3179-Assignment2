@@ -1,0 +1,24 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Suicides in countries" },
+    "data": {
+    "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
+    },
+  "transform": [
+    {"calculate": "datum.sex == 2 ? 'female' : 'male'", "as": "gender"}
+  ],
+  "mark": "bar",
+  "width": {"step": 17},
+  "encoding": {
+    "x": {
+      "aggregate": "sum", "field": "suicides_no",
+      "title": "population",
+      "stack":  "normalize"
+    },
+    "y": {"field": "country"},
+    "color": {
+      "field": "sex",
+      "scale": {"range": ["#675193", "#ca8861"]}
+    }
+  }
+}
