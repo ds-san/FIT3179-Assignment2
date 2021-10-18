@@ -1,0 +1,98 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
+      },
+      "transform": [
+        { "filter": "datum.country != ''" }
+    ],
+        "vconcat": [{
+            "width": 600,
+            "height": 300,
+            "title": "Suicide Cases around the world",
+            "projection": {
+                "type": "equirectangular"
+            },
+            "layer": [{
+
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "ne_110m_admin_0_countries"
+                        }
+                    },
+                    "transform": [{
+                        "calculate": "'Data is not available in ' + datum.properties.NAME",
+                        "as": "note"
+                    }],
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#ddd",
+                        "stroke": "white",
+                        "strokeWidth": 1
+                    },
+                    "encoding": { "tooltip": { "field": "note" } }
+                },
+                {
+                    "transform": [
+                        {
+                        "joinaggregate": [{
+                            "op": "sum",
+                            "field": "population",
+                            "as": "tpopulation"
+                            },
+                            {
+                            "op": "sum",
+                            "field": "suicides_no",
+                            "as": "tsuicide"
+                            }],
+                            "groupby": ["suicides_no,population"]
+                        }
+                    ]
+                },
+                {
+                    "lookup": "properties.NAME",
+                    "from": {
+                        "data": {
+                            "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+                            "format": {
+                                "type": "topojson",
+                                "feature": "ne_110m_admin_0_countries"
+                            }
+                        },
+                        "key": "properties.country"
+                    },
+                    "as": "Countries"
+                    },
+                    {
+                        "calculate": "(datum.tsuicide/datum.tpopulation)*100000",
+                        "as": "suicides"
+                    }
+                ],
+                "mark": { "type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5 },
+                "encoding": {
+                    "shape": { "field": "geo", "type": "geojson" },
+                    "color": {
+                        "field": "sum_suicides",
+                        "type": "quantitative",
+                        "scale": {
+                            "type": "log",
+                            "scheme": "orangered"
+                        },
+                        "legend": { "title": "Suicides per 100k" }
+                    },
+                    "tooltip": [
+                        { "field": "country", "type": "nominal", "title": "Country/Region" },
+                        {
+                            "field": "sum_suicides",
+                            "type": "quantitative",
+                            "title": "Total suicides",
+                            "format": ","
+                        }
+                    ]
+                }
+            }
+        ],
+    "config": {}
+}

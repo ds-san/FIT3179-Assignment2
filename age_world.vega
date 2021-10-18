@@ -14,15 +14,16 @@
         "op": "sum",
         "field": "suicides_no",
         "as": "tsuicide"
-      }]
+      }],
+      "groupby": ["year", "age"]
     },
     {
-      "calculate": "(datum.tpopulation/datum.tsuicide)*100000",
+      "calculate": "(datum.tsuicide/datum.tpopulation)*100000",
       "as": "suicides"
     }],
         "mark": {"type": "line"},
         "encoding": {
-            "x": {"timeunit":"year", "field": "year"},
+            "x": {"field": "year"},
             "y": {"aggregate":"sum", "field": "suicides", "type": "quantitative", "title": "Suicides per 100k"},
             "color": {"field": "age", "type": "nominal"}
         
