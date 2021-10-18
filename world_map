@@ -2,19 +2,19 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 500,
-  "title": "Total Renewable Energy Consumption",
+  "title": "Suicide around the world",
   "projection": {"type": "equalEarth"},
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json",
+        "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/master/js/customised.topo.json",
         "format": {"type": "topojson", "feature": "custom.geo"}
       },
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/laytonqian/vis2/master/js/custom.topo.json",
+        "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/master/js/customised.topo.json",
         "format": {"type": "topojson", "feature": "custom.geo"}
       },
       "transform": [
@@ -27,33 +27,31 @@
             "key": "country",
             "fields": [
               "suicide",
-              "population",
-              "norm"
+              "population"
             ]
           }
         },
         {
           "calculate": "datum.suicide / datum.population * 100000",
-          "as": "Terrawatts Per 100,000 Population"
+          "as": "Suicide Per 100,000 Population"
         }
       ],
       "projection": {"type": "equalEarth"},
       "mark": {"type": "geoshape"},
       "encoding": {
         "color": {
-          "field": "Terrawatts Per 100,000 Population",
+          "field": "Suicide Per 100,000 Population",
           "type": "quantitative",
           "scale": {"type": "log"}
         },
         "tooltip": [
           {"field": "properties.name", "type": "nominal", "title": "Country"},
           {
-            "field": "Terrawatts Per 100,000 Population",
+            "field": "Suicide Per 100,000 Population",
             "type": "quantitative"
           },
-          {"field": "suicide", "type": "quantitative"},
-          {"field": "population", "type": "quantitative"},
-          {"field": "norm", "type": "quantitative"}
+          {"field": "suicide", "type": "quantitative", "title": "Total suicides"},
+          {"field": "population", "type": "quantitative", "title": "Population"}
         ]
       }
     }
