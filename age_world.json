@@ -1,0 +1,61 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Suicides according to age" },
+    "data": {
+    "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
+    },
+    "transform": [
+      {"filter": "datum.year <2016"},
+      {
+      "joinaggregate": [{
+        "op": "sum",
+        "field": "population",
+        "as": "tpopulation"
+      },
+      {
+        "op": "sum",
+        "field": "suicides_no",
+        "as": "tsuicide"
+      }],
+      "groupby": ["year", "age"]
+    },
+    {
+      "calculate": "(datum.tsuicide/datum.tpopulation)*100000",
+      "as": "suicides"
+    }],
+    "selection": {
+      "age_highlight": {
+      "type": "multi",
+      "fields": ["age"],
+      "bind": "legend"
+      }
+    },
+    "mark": {
+      "type": "line",
+      "point": {
+        "filled": false,
+        "fill": "white"
+      },
+      "tooltip":true
+    },
+        "encoding": {
+            "x": {"field": "year"},
+            "y": {"aggregate":"sum", "field": "suicides", "type": "quantitative", "title": "Suicides per 100k"},
+            "color": {"field": "age", 
+            "type": "nominal",
+            "scale":{
+              "domain":[
+                "5-14 years",
+                "15-24 years",
+                "25-34 years",
+                "35-54 years",
+                "55-74 years",
+                "75+ years"
+              ]},
+            "opacity": {
+            "condition": {"selection": "age_highlight", "value": 0.6},
+            "value": 0.2
+            }}
+        
+        }
+}

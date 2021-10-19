@@ -26,6 +26,12 @@
       "aggregate": "sum", 
       "field": "suicides",
       "type": "quantitative"},
-    "y": {"field": "country", "type": "nominal"}
+    "y": {"field": "country", 
+    "type": "nominal",
+    "sort": "-x"
+  },
+  "tooltip":[
+    {"field":"suicides"}
+  ]
   }
 }

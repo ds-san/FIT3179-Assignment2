@@ -7,7 +7,7 @@
   "transform": [
     {"calculate": "datum.sex == 2 ? 'female' : 'male'", "as": "gender"}
   ],
-  "mark": "bar",
+  "mark": {"type":"bar", "tooltip":true},
   "width": {"step": 17},
   "encoding": {
     "x": {
@@ -17,8 +17,7 @@
     },
     "y": {"field": "country"},
     "color": {
-      "field": "sex",
-      "scale": {"range": ["#675193", "#ca8861"]}
+      "field": "sex"
     }
   }
 }

@@ -4,7 +4,8 @@
   "data": {
   "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
   },
-  "transform": [{
+  "transform": [
+    {
     "joinaggregate": [{
       "op": "sum",
       "field": "population",
@@ -14,23 +15,37 @@
       "op": "sum",
       "field": "suicides_no",
       "as": "tsuicide"
-    }]
+    }],
+    "groupby": ["sex"]
   },
   {
-    "calculate": "(datum.tpopulation/datum.tsuicide)*100000",
+    "calculate": "(datum.tsuicide/datum.tpopulation)*100000",
     "as": "suicides"
   }],
+  "selection": {
+    "gender_highlight": {
+    "type": "multi",
+    "fields": ["sex"],
+    "bind": "legend"
+    }
+    },
     "mark": {
         "type": "line",
         "point": {
           "filled": false,
           "fill": "white"
-        }
+        },
+        "tooltip":true
       },
       "encoding": {
         "x": {"timeUnit": "year", "field": "year", "title":"Years"},
-        "y": {"aggregate":"sum", "field": "suicides_no", "type": "quantitative"},
-        "color": {"field": "sex", "type": "nominal"}
+        "y": {"aggregate":"sum", "field": "suicides", "type": "quantitative"},
+        "color": {"field": "sex", 
+        "type": "nominal"},
+        "opacity": {
+        "condition": {"selection": "gender_highlight", "value": 0.6},
+        "value": 0.2
+        }
       }
     }
     
