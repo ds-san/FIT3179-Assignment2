@@ -20,8 +20,9 @@
     "calculate": "(datum.tpopulation/datum.tsuicide)*100000",
     "as": "suicides"
   }],
-    "mark": {
+  "mark": {
         "type": "line",
+        "tooltip":true,
         "point": {
           "filled": false,
           "fill": "white"

@@ -16,7 +16,7 @@
       "field": "suicides_no",
       "as": "tsuicide"
     }],
-    "groupby": ["sex"]
+    "groupby": ["year", "age"]
   },
   {
     "calculate": "(datum.tsuicide/datum.tpopulation)*100000",
@@ -48,4 +48,3 @@
         }
       }
     }
-    

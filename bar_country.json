@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Suicides in countries" },
+    "data": {
+    "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/continents.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "norm",
+        "type": "quantitative"},
+      "y": {"field": "country", 
+      "type": "nominal"
+    },
+    "tooltip":[
+      {"field":"norm"}
+    ]
+    }
+  }
