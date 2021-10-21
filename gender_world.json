@@ -1,50 +1,28 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": { "text": "Suicides in countries" },
+  "params": [
+      {
+          "name": "Year_selection",
+          "value":2000,
+          "bind":{
+              "input": "range",
+              "min": 1985,
+              "max": 2015,
+              "step": 1,
+              "name": "Year: "
+          }
+      }
+  ],
   "data": {
-  "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
+  "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/gender.csv"
   },
   "transform": [
-    {
-    "joinaggregate": [{
-      "op": "sum",
-      "field": "population",
-      "as": "tpopulation"
-    },
-    {
-      "op": "sum",
-      "field": "suicides_no",
-      "as": "tsuicide"
-    }],
-    "groupby": ["year", "age"]
-  },
-  {
-    "calculate": "(datum.tsuicide/datum.tpopulation)*100000",
-    "as": "suicides"
-  }],
-  "selection": {
-    "gender_highlight": {
-    "type": "multi",
-    "fields": ["sex"],
-    "bind": "legend"
-    }
-    },
-    "mark": {
-        "type": "line",
-        "point": {
-          "filled": false,
-          "fill": "white"
-        },
-        "tooltip":true
-      },
-      "encoding": {
-        "x": {"timeUnit": "year", "field": "year", "title":"Years"},
-        "y": {"aggregate":"sum", "field": "suicides", "type": "quantitative"},
-        "color": {"field": "sex", 
-        "type": "nominal"},
-        "opacity": {
-        "condition": {"selection": "gender_highlight", "value": 0.6},
-        "value": 0.2
-        }
-      }
-    }
+      {"filter":"datum.year == Year_selection"}
+  ],
+  "mark": "arc",
+  "encoding": {
+    "theta": {"aggregate":"sum","field": "cases", "type": "quantitative"},
+    "color": {"field": "sex", "type": "nominal"}
+  }
+}

@@ -9,11 +9,10 @@
   "encoding": {
     "x": {
       "aggregate": "sum", "field": "suicides_no",
-      "title": "population",
-      "stack":  "normalize",
-      "sort": "descending"
+      "title": "Percentage of suicide",
+      "stack":  "normalize"
     },
-    "y": {"field": "country"},
+    "y": {"field": "country", "sort":"-x"},
     "color": {
       "field": "age",
       "scale":{
