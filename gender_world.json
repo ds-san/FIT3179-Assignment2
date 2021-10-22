@@ -35,13 +35,14 @@
     "tooltip":true
   },
   "encoding": {
-    "theta": {"aggregate":"sum","field": "cases", "type": "quantitative"},
+    "theta": {"aggregate":"sum","field": "cases", "type": "quantitative", "title":"Suicide per 100k Population"},
     "opacity": {
       "condition": {"selection": "sex_highlight", "value": 1.0},
       "value": 0.4
       },
     "color": {"field": "sex", 
     "type": "nominal",
+    "title":"Sex",
     "scale": {
       "range": [
         "#93003a",

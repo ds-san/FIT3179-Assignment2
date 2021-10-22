@@ -42,8 +42,8 @@
     "tooltip":true
   },
       "encoding": {
-          "x": {"field": "year"},
-          "y": {"field": "suicides", "type": "quantitative", "title": "Suicides per 100k"},
+          "x": {"field": "year", "title":"Year"},
+          "y": {"field": "suicides", "type": "quantitative", "title": "Suicide per 100k Population"},
           "opacity": {
           "condition": {"selection": "age_highlight", "value": 0.9},
           "value": 0.2
@@ -53,6 +53,7 @@
           "color": {"field": "age", 
           "type": "nominal",
           "legend":{"orient":"left"},
+          "title":"Age",
           "scale":{
             "domain":[
               "5-14 years",
@@ -61,7 +62,18 @@
               "35-54 years",
               "55-74 years",
               "75+ years"
-            ]}
+            ]
+            ,
+            "range": [
+              "#ca5a4b",
+              "#9b63cb",
+              "#c65a88",
+              "#768cc8",
+              "#c9733a",
+              "#5ea269"
+              
+            ]
+          }
             
             }
       

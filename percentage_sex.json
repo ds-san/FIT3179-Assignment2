@@ -1,12 +1,26 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Suicides according to sex per countries" },
+    "title": { "text": "Proportion of Suicides according to sex per countries" },
     "background" : "#f2f9ff",
+    "params": [
+      {
+          "name": "Year_selection",
+          "value":1985,
+          "bind":{
+              "input": "range",
+              "min": 1985,
+              "max": 2015,
+              "step": 1,
+              "name": "Year: "
+          }
+      }
+  ],
     "data": {
     "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
     },
   "transform": [
     {"filter":"datum.suicides_no>0"},
+    {"filter":"datum.year == Year_selection"},
     {"calculate": "datum.sex == 2 ? 'female' : 'male'", "as": "gender"}
   ],
   "selection": {
