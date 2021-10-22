@@ -1,23 +1,43 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Suicides in countries" },
+    "title": { "text": "Suicides according to sex per countries" },
+    "background" : "#f2f9ff",
     "data": {
     "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
     },
   "transform": [
+    {"filter":"datum.suicides_no>0"},
     {"calculate": "datum.sex == 2 ? 'female' : 'male'", "as": "gender"}
   ],
+  "selection": {
+    "sex_highlight": {
+    "type": "multi",
+    "fields": ["sex"],
+    "bind": "legend"
+    }
+  },
   "mark": {"type":"bar", "tooltip":true},
   "width": {"step": 17},
   "encoding": {
     "x": {
       "aggregate": "sum", "field": "suicides_no",
-      "title": "population",
+      "title": "Proportion of people",
       "stack":  "normalize"
     },
-    "y": {"field": "country","sort":"-x"},
+    "y": {"field": "country",
+    "title": "Country"},
+    "opacity": {
+      "condition": {"selection": "sex_highlight", "value": 1.0},
+      "value": 0.4
+      },
     "color": {
-      "field": "sex"
+      "field": "sex",
+      "scale": {
+        "range": [
+          "#93003a",
+          "#2b2c54"
+        ]
+      }
     }
   }
 }

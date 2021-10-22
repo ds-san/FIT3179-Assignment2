@@ -1,20 +1,38 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Suicides in countries" },
+    "title": { "text": "Suicides according to age per countries" },
+    "background" : "#f2f9ff",
     "data": {
     "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
+    },
+    "transform": [
+      {"filter":"datum.suicides_no>0"}
+    ],
+    "selection": {
+      "age_highlight": {
+      "type": "multi",
+      "fields": ["age"],
+      "bind": "legend"
+      }
     },
   "mark": {"type":"bar", "tooltip":true},
   "width": {"step": 17},
   "encoding": {
     "x": {
       "aggregate": "sum", "field": "suicides_no",
-      "title": "Percentage of suicide",
-      "stack":  "normalize"
+      "title": "Proportion of people",
+      "stack":  "normalize",
+      "sort":"descending"
     },
-    "y": {"field": "country", "sort":"-x"},
+    "y": {"field": "country",
+    "title": "Country"},
+    "opacity": {
+    "condition": {"selection": "age_highlight", "value": 1.0},
+    "value": 0.2
+    },
     "color": {
       "field": "age",
+      "legend":{"orient":"left"},
       "scale":{
         "domain":[
           "5-14 years",

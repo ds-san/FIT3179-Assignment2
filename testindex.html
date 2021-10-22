@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    
+        <script src="vis2.js"></script>
+        <link rel="stylesheet" type="text/css" href="vis2.css" media="all">
+    
+        <title>Australia's Demography</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <div class = "main_page">
+
+            <h1 >Australia's Demography</h1>
+
+            
+            <div class = "pure-g">
+                <div class = "pure-u-1-2">
+                    <p>Every five years the <a href = "https://www.abs.gov.au/">Australian Bureau of Statistics</a> conducts a census of everyone living in Australia.
+                    The purpose of this is to record where people are living and their qualities in order to guide public policy.
+                    This year another census was conducted and the results will be released from June 2022 onwards.
+                    These charts aim to visualise the results of the previous, 2016, census data.</p>
+                </div>
+                <div class = "pure-u-1 2">
+                    
+                </div>
+            </div>
+
+            <hr class = "hr1">
+
+            <div>
+                <p>The majority of Australia's population lives in cities in the south-east.
+                    This is where the continent is wettest and thus capable of growing enough food to support these cities.
+                    Australia's cities are very centralised, with only five cities having more than 1 million residents and all these cities are state capitals.
+                    </p>
+            </div>
+            
+            <div>
+                <div id = "urban_pop_map">
+                </div>
+            </div>
+
+            <hr class = "hr1">
+            
+            <div >
+                <p>
+                    Without immigration Australia's population will steadily age as the birth rate decreases.
+                    You can see this pattern clearly by filtering the below two charts for Tasmania using the legend selection.
+                    As the state with the lowest immigration rate, it has the oldest population despite a relatively high birth rate.
+                </p>
+                <div id = "birth_charts"></div>
+            </div>
+
+            <hr class = "hr1">
+
+            <div class="center">
+                <p>For the last century Australia has relied apon immigration to grow the population and fill skill shortages.
+                    The most common origin of immigrants has shifted from <span class = "bold" style="color:#e45756">Europe</span> 
+                    to southern and eastern <span class = "bold" style="color:#f58519"> Asia</span>. 
+                    Australia has many economic treaties with <span class = "bold" style="color:#54a24b">New Zealand</span> making it easy to work and live in the other nation.
+                    This, and the proximity, explains why New Zealand is such a large source relative to its native population.
+                    To <span class = "bold">filter </span> the origin map to a different year range, select another bar in the Yearly Breakdown chart.
+                    
+                </p>
+            </div>
+            
+            <div class="center">
+                <div id = "imm_pop_map"></div>
+            </div>
+
+            <hr class = "hr1">
+
+            <p>Visualisation created by Lewis Bamford with data sourced from the <a href = "https://www.abs.gov.au/">Australian Bureau of Statistics</a></p>
+            <br>
+        </div>
+
+    </body>
+
+
+</html>
+
+    <!-- pure grid group -->
+    <div>
+        <p>
+          Among these people commiting suicide we can look into the age groups and gender of the people to try to determine 
+          any patterns that may emerge
+        </p>
+        <div class="pure-g">
+          <div class="pure-u-2-3">
+            <div id="vis2"  class="vis-container"></div>
+          </div>
+          <div class="pure-u-1-5">
+            <div id="vis3"  class="vis-container"></div>
+            </div>
+          </div>
+          <div class="pure-u-1-3">
+            <div class="description description-right">
+              <h2>This is the second section</h2>
+              <p>Similar to the previous section, but the colum partition is swapped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+            </div>
+          </div>
+        
+      </div>

@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 500,
+  "width": 1180,
+  "height" : 800,
   "title": "Suicide around the world",
+  "background" : "#f2f9ff",
   "projection": {"type": "equalEarth"},
   "layer": [
     {
@@ -42,6 +43,7 @@
         "color": {
           "field": "Suicide Per 100,000 Population",
           "type": "quantitative",
+          "legend" : {"orient": "top-left", "direction" : "vertical"},
           "scale": {"type": "log"}
         },
         "tooltip": [
@@ -51,7 +53,7 @@
             "type": "quantitative"
           },
           {"field": "suicide", "type": "quantitative", "title": "Total suicides"},
-          {"field": "population", "type": "quantitative", "title": "Population"}
+          {"field": "population", "type": "quantitative", "title": "Total Population"}
         ]
       }
     }

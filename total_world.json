@@ -1,10 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": { "text": "Suicide rates in countries" },
+  "width": 1150,
+  "background" : "#f2f9ff",
+  "title": { "text": "Worldwide Yearly suicides" },
   "data": {
   "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/suicidal.csv"
   },
-  "transform": [{
+  "transform": [
+    {
     "joinaggregate": [{
       "op": "sum",
       "field": "population",
@@ -32,8 +35,13 @@
         }
       },
       "encoding": {
-        "x": {"timeUnit": "year", "field": "year"},
-        "y": { "field": "suicides", "type": "quantitative"}
+        "x": {"timeUnit": "year", 
+        "field": "year",
+        "title":"Year"},
+        "y": { "field": "suicides", 
+        "type": "quantitative",
+        "title":"Suicides per 100,000 population",
+        "scale": {"domain": [10,16]}}
       }
     }
     

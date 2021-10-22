@@ -1,29 +1,28 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Suicides in countries" },
-    "params": [
-        {
-            "name": "Year_selection",
-            "value":2000,
-            "bind":{
-                "input": "range",
-                "min": 1985,
-                "max": 2015,
-                "step": 1,
-                "name": "Year: "
-            }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1480,
+  "background" : "#f2f9ff",
+  "title": { "text": "Suicide rates in countries" },
+  "data": {
+  "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/continents.csv"
+  },
+
+    "mark": {
+        "type": "line",
+        "tooltip":true,
+        "point": {
+          "filled": false,
+          "fill": "white"
         }
-    ],
-    "data": {
-    "url": "https://raw.githubusercontent.com/ds-san/FIT3179-Assignment2/main/data/gender.csv"
-    },
-    "transform": [
-        {"filter":"datum.year == Year_selection"}
-    ],
-    "mark": "arc",
-    "encoding": {
-      "theta": {"aggregate":"sum","field": "cases", "type": "quantitative"},
-      "color": {"field": "sex", "type": "nominal"}
+      },
+      "encoding": {
+        "x": {"timeUnit": "year", 
+        "field": "year",
+        "title":"Year"},
+        "y": { "field": "cases", 
+        "type": "quantitative",
+        "title":"Suicides per 100,000 population",
+        "scale": {"domain": [10,16]}}
+      }
     }
-  }
-  
+    

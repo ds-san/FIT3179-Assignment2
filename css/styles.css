@@ -1,6 +1,12 @@
-{
-      font-family: 'Source Sans Pro', sans-serif;
-    }
+p {font-family: 'Open Sans', sans-serif; text-align: left; padding-right: 20px;}
+a {font-family: 'Open Sans', sans-serif; text-align: center;}
+h1 {font-family: 'Open Sans', sans-serif; text-align: center;}
+
+.vega-embed.has-actions {
+  margin: auto;
+  padding: 10dx;
+}
+
     h1{
       font-weight: 900;
     }
@@ -14,6 +20,28 @@
        padding: 50px;
        padding-top: 35px;
     }
+
+    .hr1{
+      padding-top: 5px;
+    }
+
+    .main_page {
+      width : 1200px;
+      margin : auto;
+      padding-top: 10px;
+      background-color: #f2f9ff;
+    }
+
+    .pure-g{
+      padding-left:15px;
+    }
+
+    .vega-bind {
+      font-family: 'Open Sans', sans-serif;
+      margin : auto;
+      padding-left: 20px;
+    }
+
     .vis-container{
       width: 100%;
     }
@@ -32,3 +60,7 @@
     .small-font{
         font-size: 14px;
     }
+
+.flex-container {
+  display: flex;
+}

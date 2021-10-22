@@ -14,7 +14,10 @@
       "op": "sum",
       "field": "suicides_no",
       "as": "tsuicide"
-    }]
+    }],
+    "groupby": [
+        "year"
+      ]
   },
   {
     "calculate": "(datum.tpopulation/datum.tsuicide)*100000",
