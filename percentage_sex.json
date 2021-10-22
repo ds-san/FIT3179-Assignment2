@@ -46,6 +46,7 @@
       },
     "color": {
       "field": "sex",
+      "title":"Sex",
       "scale": {
         "range": [
           "#93003a",
