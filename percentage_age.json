@@ -46,6 +46,7 @@
   },
   "color": {
     "field": "age",
+    "title":"Age",
     "legend":{"orient":"left"},
     "scale":{
       "domain":[
