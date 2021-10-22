@@ -10,9 +10,7 @@ h1 {font-family: 'Open Sans', sans-serif; text-align: center;}
     h1{
       font-weight: 900;
     }
-     body{
-       background-color: lightgray;
-     }
+    
      .page{
        width: 850px;    
        background-color: white;   
